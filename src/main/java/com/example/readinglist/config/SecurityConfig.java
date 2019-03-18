@@ -29,18 +29,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .failureUrl("login?error=true");
+                .failureUrl("/login?error=true");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        Reader gary = new Reader();
-        gary.setUsername("Gary");
         auth.userDetailsService(new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return readerRepository.findById(username).get();
-                        //readerRepository.findOne(readerRepository.findById(username));
+                return readerRepository.findById(username).orElse(null);
             }
         });
     }

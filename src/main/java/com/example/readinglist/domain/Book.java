@@ -1,4 +1,4 @@
-package com.example.readinglist.datastruct;
+package com.example.readinglist.domain;
 
 import lombok.Data;
 

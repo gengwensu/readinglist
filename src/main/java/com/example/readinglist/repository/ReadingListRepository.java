@@ -1,6 +1,6 @@
 package com.example.readinglist.repository;
 
-import com.example.readinglist.datastruct.Book;
+import com.example.readinglist.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

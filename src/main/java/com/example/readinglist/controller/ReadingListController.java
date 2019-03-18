@@ -1,6 +1,6 @@
 package com.example.readinglist.controller;
 
-import com.example.readinglist.datastruct.Book;
+import com.example.readinglist.domain.Book;
 import com.example.readinglist.repository.ReadingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

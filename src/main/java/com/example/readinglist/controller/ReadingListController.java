@@ -26,7 +26,7 @@ public class ReadingListController {
         this.readingListRepository = readingListRepository;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping("/login")
     public String showLoginForm() {
         return "login";
     }

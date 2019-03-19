@@ -24,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").access("hasRole('READER')")
-                .antMatchers("/**").permitAll()
+                .antMatchers("/login").access("hasRole('READER')")
+                .antMatchers("/readinglist").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -37,7 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return readerRepository.findById(username).orElse(null);
+                UserDetails userDetails = readerRepository.findById(username).orElse(null);
+                if(userDetails!=null) {
+                    return userDetails;
+                }
+                throw new UsernameNotFoundException("User '" + username + "' not found.");
             }
         });
     }
